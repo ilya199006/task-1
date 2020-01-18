@@ -1,8 +1,8 @@
 <template>
   <div class="switch-wrapper">
-    <div class="switch" v-on:click="switchPressed(conditions)">
-      <div class="switch-knob">
-        <span>{{knobText}}</span>
+    <div class="switch" v-on:click="clickSwitch(conditions, knobText)">
+      <div class="switch-knob" id="switchKnob">
+        <span>{{knobText.text}}</span>
       </div>
     </div>
   </div>
@@ -14,11 +14,19 @@ export default {
   name: 'switchIndex',
   props: ['conditions', 'knobText'],
   methods: {
-    switchPressed(conditions, knobText) {
+    clickSwitch(conditions, knobText){
       var x = conditions.switch;
       conditions.switch = !x;
-      this.$emit('knobChange');
-    },
+
+      if (x) {
+        knobText.text = 'OFF';
+        switchKnob.style = "transform: translateX(55px); transition: transform 0.5s ease-out;";
+      }
+      else {
+        knobText.text = 'ON';
+        switchKnob.style = "transform: translateX(0px); transition: transform 0.5s ease-out;";
+      }
+    }
   }
 }
 </script>
