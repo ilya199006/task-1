@@ -23,7 +23,7 @@ export default {
     padding-bottom: 100px
 
   button
-    -webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;
+    box-sizing: content-box
     height: 34px
     display: block
     margin: 0 auto
@@ -36,4 +36,12 @@ export default {
     font-size: 28px
     text-align: center
     border: none
+    outline: 0
+
+    &:active, &:focus 
+      outline: none
+
+    &::-moz-focus-inner 
+      border: 0
+
 </style>

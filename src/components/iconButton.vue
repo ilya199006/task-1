@@ -41,9 +41,15 @@ export default {
     border: none
     background-color: #9013FE
 
-  button img
-    margin-top: 3px
-    width: 35px
-    height: 35px
+    &:active, &:focus 
+      outline: none
+
+    &::-moz-focus-inner 
+      border: 0
+
+    & img
+      margin-top: 3px
+      width: 35px
+      height: 35px
 
 </style>

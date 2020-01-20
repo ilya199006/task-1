@@ -29,8 +29,6 @@ export default {
     margin: 0 auto
 
   #inputName
-    -webkit-box-sizing: content-box
-    -moz-box-sizing: content-box
     box-sizing: content-box
     width: 100%
     height: 34px
@@ -42,22 +40,22 @@ export default {
     border: none
     border-radius: 20px
 
-  input::-webkit-input-placeholder
-    color: rgba(0,0,0,.5)
+    &::-webkit-input-placeholder
+      color: rgba(0,0,0,.5)
 
-  input::-moz-placeholder
-    color: rgba(0,0,0,.5)
+    &::-moz-placeholder
+      color: rgba(0,0,0,.5)
 
-  input::-ms-input-placeholder
-    color: rgba(0,0,0,.5)
+    &::-ms-input-placeholder
+      color: rgba(0,0,0,.5)
 
-  input:focus::-webkit-input-placeholder
-    opacity: 0
+    &:focus::-webkit-input-placeholder
+      opacity: 0
 
-  input:focus::-moz-placeholder
-    opacity: 0
+    &:focus::-moz-placeholder
+      opacity: 0
 
-  input:focus::-ms-input-placeholder
-    opacity: 0
+    &:focus::-ms-input-placeholder
+      opacity: 0
 
 </style>
