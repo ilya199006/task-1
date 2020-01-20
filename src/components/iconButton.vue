@@ -1,6 +1,6 @@
 <template>
   <div class="iconButton-wrapper">
-    <button name="btnSettings" v-on:click="clickSettingsButton(conditions)">
+    <button id="btnSettings" name="btnSettings" v-on:click="clickSettingsButton(conditions)">
       <img id="iconSettings" src="../assets/settings.png" alt="settings">
     </button>
   </div>
@@ -15,10 +15,14 @@ export default {
       var x = conditions.iconButton.pressed;
       conditions.iconButton.pressed = !x;
       console.info('"iconButton": "pressed": ' + x);
-      if(x)
-        iconSettings.style = 'transform: rotate(0deg);'
-      else
-        iconSettings.style = 'transform: rotate(30deg);'
+      if(x) {
+        iconSettings.style = 'transform: rotate(0deg); transition: transform 0.2s ease-out'
+        btnSettings.style = 'background-color: #9013FE; transition: background-color 0.2s ease-out'
+      }
+      else {
+        iconSettings.style = 'transform: rotate(90deg); transition: transform 0.2s ease-out'
+        btnSettings.style = 'background-color: #BD10E0; transition: background-color 0.2s ease-out'
+      }
     }
   }
 }

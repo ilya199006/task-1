@@ -1,8 +1,8 @@
 <template>
   <div class="switch-wrapper">
-    <div class="switch" v-on:click="clickSwitch(conditions, knobText)">
-      <div class="switch-knob" id="switchKnob">
-        <span>{{knobText.text}}</span>
+    <div class="switch" v-on:click="clickSwitch(conditions)">
+      <div id="switchKnob" 
+            v-bind:class="{'switch-knob-on' : conditions.switch, 'switch-knob-off' : !conditions.switch}">
       </div>
     </div>
   </div>
@@ -14,18 +14,8 @@ export default {
   name: 'switchIndex',
   props: ['conditions', 'knobText'],
   methods: {
-    clickSwitch(conditions, knobText){
-      var x = conditions.switch;
-      conditions.switch = !x;
-
-      if (x) {
-        knobText.text = 'OFF';
-        switchKnob.style = "transform: translateX(55px); transition: transform 0.5s ease-out;";
-      }
-      else {
-        knobText.text = 'ON';
-        switchKnob.style = "transform: translateX(0px); transition: transform 0.5s ease-out;";
-      }
+    clickSwitch(conditions) {
+      conditions.switch = !conditions.switch;
     }
   }
 }
@@ -37,28 +27,47 @@ export default {
     padding-bottom: 30px;
 
   .switch
-    -webkit-box-sizing: border-box
-    -moz-box-sizing: border-box
     box-sizing: border-box
     padding-top: 5px
     padding-left: 5px
     margin: 0 auto
     width: 120px
     height: 65px 
-    background-color: #000
+    background-color: #fff
     border-radius: 40px
-    border: 1px solid #000
+    border: 2px solid #000
 
-  .switch-knob
+  .switch-knob-on
     width: 52px
     height: 52px
     background-color: #9013FE
     border-radius: 100%
+    transform: translateX(0px)
+    transition: .5s ease-out
 
-  span
-    padding-top: 17px
-    display: block
-    font-family: "Comfortaa"
+    &:after
+      content: 'ON'
+      display: block
+      color: #fff
+      font-family: "Comfortaa"
+      font-weight: bold;
+      padding-top: 17px
+
+  .switch-knob-off
+    width: 52px
+    height: 52px
+    background-color: #BD10E0
+    border-radius: 100%
+    transform: translateX(55px)
+    transition: .5s ease-out
+
+    &:after
+      content: 'OFF'
+      display: block
+      color: #fff
+      font-family: "Comfortaa"
+      font-weight: bold;
+      padding-top: 17px
 
 
 </style>
