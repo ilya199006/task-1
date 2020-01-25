@@ -12,10 +12,11 @@
 
 export default {
   name: 'switchIndex',
-  props: ['conditions', 'knobText'],
+  props: ['conditions'],
   methods: {
     clickSwitch(conditions) {
       conditions.switch = !conditions.switch;
+      console.info('"switch": ' + conditions.switch);
     }
   }
 }
@@ -24,7 +25,7 @@ export default {
 <style scoped lang="sass">
   .switch-wrapper
     padding-top: 30px
-    padding-bottom: 30px;
+    padding-bottom: 30px
 
   .switch
     box-sizing: border-box
@@ -50,7 +51,7 @@ export default {
       display: block
       color: #fff
       font-family: "Comfortaa"
-      font-weight: bold;
+      font-weight: bold
       padding-top: 17px
 
   .switch-knob-off
@@ -66,7 +67,7 @@ export default {
       display: block
       color: #fff
       font-family: "Comfortaa"
-      font-weight: bold;
+      font-weight: bold
       padding-top: 17px
 
 

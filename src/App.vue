@@ -12,7 +12,6 @@
       />
       <switchIndex 
         v-bind:conditions="conditions"
-        v-bind:knobText="knobText"
       />
       <outputIndex 
         v-bind:conditions="conditions"
@@ -32,9 +31,6 @@ export default {
   name: 'app',
   data() {
     return {
-      knobText: {
-        text: "ON"
-      },
       conditions: {
         "input": "",
         "button": {
