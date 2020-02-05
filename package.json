@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "task-1": "node task-1.js"
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "figlet": "^1.2.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
