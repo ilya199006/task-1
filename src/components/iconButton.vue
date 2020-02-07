@@ -15,6 +15,9 @@ export default {
       var x = conditions.iconButton.pressed;
       conditions.iconButton.pressed = !x;
       console.info('"iconButton": "pressed": ' + x);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/iconButton', true);
+      xhr.send('iconButton: ' + conditions.iconButton.pressed);
       if(x) {
         iconSettings.style = 'transform: rotate(0deg); transition: transform 0.2s ease-out'
         btnSettings.style = 'background-color: #9013FE; transition: background-color 0.2s ease-out'

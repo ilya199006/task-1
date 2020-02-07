@@ -17,6 +17,9 @@ export default {
     clickSwitch(conditions) {
       conditions.switch = !conditions.switch;
       console.info('"switch": ' + conditions.switch);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/switchIndex', true);
+      xhr.send('switch: ' + conditions.switch);
     }
   }
 }

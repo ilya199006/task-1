@@ -14,6 +14,9 @@ export default {
     inputName(conditions) {
       conditions.input = inputName.value;
       console.info('"input": ' + conditions.input);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/inputIndex', true);
+      xhr.send('inputIndex: ' + inputName.value);
     }
   }
 }

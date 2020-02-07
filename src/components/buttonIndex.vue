@@ -10,8 +10,11 @@ export default {
   props: ['conditions'],
   methods: {
     clickEntryButton(conditions) {
-      conditions.button.pressed = true
-      console.info('"button": "pressed": ' + conditions.button.pressed)
+      conditions.button.pressed = true;
+      console.info('"button": "pressed": ' + conditions.button.pressed);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/buttonIndex', true);
+      xhr.send('buttonIndex: ' + conditions.button.pressed);
     }
   }
 }

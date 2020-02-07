@@ -11,40 +11,51 @@ const portNum = 3000;
 const fileName = path.parse(__filename).name;
 const server = http.createServer();
 
-server.on('request', (req, res) => { 
+server.on('request', (req, res) => {
 
-  if (req.url === '/')
-    req.url = 'index.html';
-
-  let filePath = path.join(__dirname, 'dist', req.url);
-  let extName = path.extname(filePath);
-  let contentType = 'text/html';
-
-  switch (extName) {
-    case '.css':
-      contentType = 'text/css';
-      break;
-    case '.js':
-      contentType = 'text/javascript';
-      break;
-    case '.img':
-      contentType = 'image/png';
-      break;
-    default:
-      contentType = 'text/html';
-      break;
+  if (req.method == 'POST') {
+    req.on ('data', function(data){
+      console.info(data.toString('utf-8'));
+    })
+    req.on ('end', function(){
+      res.end();
+    })
   }
 
-  fs.readFile(filePath, (err, data) => {
-    if(err) {
-      console.log('\n Файл не создан! Запустите "npm run build" в корне проекта \n');
-      throw err;
+  if (req.method == 'GET') {
+    if (req.url === '/')
+      req.url = 'index.html';
+
+    let filePath = path.join(__dirname, 'dist', req.url);
+    let extName = path.extname(filePath);
+    let contentType = 'text/html';
+
+    switch (extName) {
+      case '.css':
+        contentType = 'text/css';
+        break;
+      case '.js':
+        contentType = 'text/javascript';
+        break;
+      case '.img':
+        contentType = 'image/png';
+        break;
+      default:
+        contentType = 'text/html';
+        break;
     }
-    res.writeHead(200, {
-      'Content-Type': contentType
+
+    fs.readFile(filePath, (err, data) => {
+      if(err) {
+        console.log('\n Файл не создан! Запустите "npm run build" в корне проекта \n');
+        throw err;
+      }
+      res.writeHead(200, {
+        'Content-Type': contentType
+      });
+      res.end(data);
     });
-    res.end(data);
-  });
+  }
 });
 
 server.listen(portNum, serverAdd,() => {
