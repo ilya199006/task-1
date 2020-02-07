@@ -46,7 +46,7 @@ server.on('request', (req, res) => {
     }
 
     fs.readFile(filePath, (err, data) => {
-      if(err) {
+      if(err && (req.url !== '/favicon.ico')) {
         console.log('\n Файл не создан! Запустите "npm run build" в корне проекта \n');
         throw err;
       }
